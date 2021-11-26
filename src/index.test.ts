@@ -35,6 +35,22 @@ describe('babel-plugin-logger-namespace', () => {
     expect(result.trim()).toEqual(expected.trim())
   })
 
+  test('removing subfix in namespace that matches `stripSubfix`', () => {
+    const input = stripIndent(`
+      console.log(NAMESPACE);
+    `)
+
+    const expected = stripIndent(`
+      console.log("test:abc");
+    `)
+    const result = babelCore.transform(input, {
+      plugins: [[importMetaPlugin, { stripPrefix: 'src:', stripSubfix: '.ts' }]],
+      cwd: '',
+      filename: 'src/test/abc.ts'
+    })?.code ?? ''
+    expect(result.trim()).toEqual(expected.trim())
+  })
+
   test('adding namespace according to `prefix`', () => {
     const input = stripIndent(`
       console.log(NAMESPACE);

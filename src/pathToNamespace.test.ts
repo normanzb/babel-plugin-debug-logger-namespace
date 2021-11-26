@@ -18,6 +18,14 @@ describe('pathToNamespace()', () => {
     expect(result).toEqual('work:foo:bar:something:else')
   })
 
+  test('stripping subfix according to `stripSubfix`', () => {
+    const result = pathToNamespace('src/abcwork/foo\\bar/something/else.ts', {
+      stripPrefix: 'src:abc',
+      stripSubfix: '.ts'
+    })
+    expect(result).toEqual('work:foo:bar:something:else')
+  })
+
   test('adding prefix according to `prefix`', () => {
     const result = pathToNamespace('abcwork/foo\\bar/something/else', {
       prefix: 'prefix:'
