@@ -33,3 +33,4 @@ After the plugin is installed, configure it in babel config file
 
 * stripPrefix?: Remove specified prefix from the resulting namespace
 * prefix?: Add specified prefix to the resulting namespace
+* stripSubfix?: Remove specified subfix from the resulting namespace
