@@ -18,10 +18,36 @@ describe('pathToNamespace()', () => {
     expect(result).toEqual('work:foo:bar:something:else')
   })
 
+  test('supporting multiple prefix to be removed', () => {
+    let result = pathToNamespace('src/abcwork/foo\\bar/something/else.ts', {
+      stripPrefix: 'src:abc|source:abc',
+      stripSubfix: '.ts'
+    })
+    expect(result).toEqual('work:foo:bar:something:else')
+    result = pathToNamespace('source/abcwork/foo\\bar/something/else.ts', {
+      stripPrefix: 'src:abc|source:abc',
+      stripSubfix: '.ts|.tsx'
+    })
+    expect(result).toEqual('work:foo:bar:something:else')
+  })
+
   test('stripping subfix according to `stripSubfix`', () => {
     const result = pathToNamespace('src/abcwork/foo\\bar/something/else.ts', {
       stripPrefix: 'src:abc',
       stripSubfix: '.ts'
+    })
+    expect(result).toEqual('work:foo:bar:something:else')
+  })
+
+  test('supporting multiple subfix to be removed', () => {
+    let result = pathToNamespace('src/abcwork/foo\\bar/something/else.tsx', {
+      stripPrefix: 'src:abc',
+      stripSubfix: '.ts|.tsx'
+    })
+    expect(result).toEqual('work:foo:bar:something:else')
+    result = pathToNamespace('src/abcwork/foo\\bar/something/else.ts', {
+      stripPrefix: 'src:abc',
+      stripSubfix: '.ts|.tsx'
     })
     expect(result).toEqual('work:foo:bar:something:else')
   })

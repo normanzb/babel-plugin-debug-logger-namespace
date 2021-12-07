@@ -31,6 +31,6 @@ After the plugin is installed, configure it in babel config file
 
 ## Plugin Options
 
-* stripPrefix?: Remove specified prefix from the resulting namespace
+* stripPrefix?: Remove specified prefix from the resulting namespace. You can set multiple of them by separating each item with a `|`. e.g. `foo:|bar:` will remove both foo and bar from the prefix.
 * prefix?: Add specified prefix to the resulting namespace
-* stripSubfix?: Remove specified subfix from the resulting namespace
+* stripSubfix?: Remove specified subfix from the resulting namespace. Same as `stripPrefix`, it supports multiple subfixes that separated by `|`.
