@@ -3,6 +3,7 @@ import template from '@babel/template'
 import type { PluginObj, PluginPass, NodePath } from '@babel/core'
 import type { Statement, Identifier } from '@babel/types'
 import pathToNamespace, { Options } from './pathToNamespace'
+import { isNodeModulesInPath } from './isNodeModulesInPath'
 
 const ast = template.ast
 
@@ -25,6 +26,7 @@ export default function (): PluginObj<MyPluginPass> {
         if (
           state.file.opts.filename == null ||
           state.file.opts.root == null ||
+          isNodeModulesInPath(state.file.opts.filename) ||
           !state.file.opts.filename.startsWith(state.file.opts.root)
         ) {
           return
@@ -40,7 +42,7 @@ export default function (): PluginObj<MyPluginPass> {
 
         path.traverse({
           Identifier (idPath) {
-            if (idPath.node.name === 'NAMESPACE') {
+            if (idPath.node.name === (state.opts?.placeholder ?? 'NAMESPACE')) {
               metas.push(idPath)
             }
           }

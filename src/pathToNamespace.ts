@@ -1,4 +1,5 @@
 export type Options = {
+  placeholder?: string
   stripPrefix?: string
   prefix?: string
   stripSubfix?: string
