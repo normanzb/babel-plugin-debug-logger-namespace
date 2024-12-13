@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/normanzb/babel-plugin-logger-namespace/compare/v0.4.0...v0.4.1) (2024-12-13)
+
+
+### Features
+
+* support customize placeholder and avoid touching any module in node_modules ([3c028a6](https://github.com/normanzb/babel-plugin-logger-namespace/commit/3c028a614621b1f37e1c89f31495c7559bec6f70))
+
 ## 0.4.0 (2022-09-01)
 
 

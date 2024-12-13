@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-logger-namespace",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Babel plugin that generates the namespace for creating a logger based on the path of the module",
   "repository": {
     "type": "git",
